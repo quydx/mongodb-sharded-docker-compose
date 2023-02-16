@@ -117,3 +117,4 @@ or `sh.shardCollection("testdb.testtable", { testcol: 1 } )`
 ##### Reference Docs:  
 1. https://www.digitalocean.com/community/tutorials/how-to-use-sharding-in-mongodb#step-3-running-mongos-and-adding-shards-to-the-cluster  
 2. https://phoenixnap.com/kb/mongodb-sharding  
+3. https://www.mongodb.com/docs/v6.0/core/sharded-cluster-high-availability/
