@@ -28,32 +28,60 @@ services:
       - 10003:27017
     volumes:
       - configs3:/data/db
-  shard1s1:
-    container_name: shard1s1
+
+  shard11:
+    container_name: shard11
     image: mongo
-    command: mongod --shardsvr --replSet shard1rs --port 27017 --dbpath /data/db
+    command: mongod --shardsvr --replSet shard1 --port 27017 --dbpath /data/db
     ports:
       - 20001:27017
     volumes:
-      - shard1s1:/data/db
+      - shard11:/data/db
 
-  shard1s2:
-    container_name: shard1s2
+  shard12:
+    container_name: shard12
     image: mongo
-    command: mongod --shardsvr --replSet shard1rs --port 27017 --dbpath /data/db
+    command: mongod --shardsvr --replSet shard1 --port 27017 --dbpath /data/db
     ports:
       - 20002:27017
     volumes:
-      - shard1s2:/data/db
+      - shard12:/data/db
 
-  shard1s3:
-    container_name: shard1s3
+  shard13:
+    container_name: shard13
     image: mongo
-    command: mongod --shardsvr --replSet shard1rs --port 27017 --dbpath /data/db
+    command: mongod --shardsvr --replSet shard1 --port 27017 --dbpath /data/db
     ports:
       - 20003:27017
     volumes:
-      - shard1s3:/data/db
+      - shard13:/data/db
+  shard21:
+    container_name: shard21
+    image: mongo
+    command: mongod --shardsvr --replSet shard2 --port 27017 --dbpath /data/db
+    ports:
+      - 20004:27017
+    volumes:
+      - shard21:/data/db
+
+  shard22:
+    container_name: shard22
+    image: mongo
+    command: mongod --shardsvr --replSet shard2 --port 27017 --dbpath /data/db
+    ports:
+      - 20005:27017
+    volumes:
+      - shard22:/data/db
+
+  shard23:
+    container_name: shard23
+    image: mongo
+    command: mongod --shardsvr --replSet shard2 --port 27017 --dbpath /data/db
+    ports:
+      - 20006:27017
+    volumes:
+      - shard23:/data/db
+
   mongos:
     container_name: mongos
     image: mongo
@@ -66,6 +94,9 @@ volumes:
   configs1: {}
   configs2: {}
   configs3: {}
-  shard1s1: {}
-  shard1s2: {}
-  shard1s3: {}
+  shard11: {}
+  shard12: {}
+  shard13: {}
+  shard21: {}
+  shard22: {}
+  shard23: {}
