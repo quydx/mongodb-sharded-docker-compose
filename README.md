@@ -62,6 +62,8 @@
 `sh.shardCollection("testdb.testtable", { testcol: "hashed" } )`
 or `sh.shardCollection("testdb.testtable", { testcol: 1 } )`
 
+_* Note: We can shard an existing collection: [https://dba.stackexchange.com/questions/207196/mongodb-sharding-an-collection-with-data-already-in-it](https://dba.stackexchange.com/questions/207196/mongodb-sharding-an-collection-with-data-already-in-it)_
+
 ##### 6. Create exmaple data:  
 
 {
