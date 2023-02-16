@@ -1,0 +1,71 @@
+version: '3'
+
+services:
+
+  configs1:
+    container_name: configs1
+    image: mongo
+    command: mongod --configsvr --replSet cfgrs --port 27017 --dbpath /data/db
+    ports:
+      - 10001:27017
+    volumes:
+      - configs1:/data/db
+
+  configs2:
+    container_name: configs2
+    image: mongo
+    command: mongod --configsvr --replSet cfgrs --port 27017 --dbpath /data/db
+    ports:
+      - 10002:27017
+    volumes:
+      - configs2:/data/db
+
+  configs3:
+    container_name: configs3
+    image: mongo
+    command: mongod --configsvr --replSet cfgrs --port 27017 --dbpath /data/db
+    ports:
+      - 10003:27017
+    volumes:
+      - configs3:/data/db
+  shard1s1:
+    container_name: shard1s1
+    image: mongo
+    command: mongod --shardsvr --replSet shard1rs --port 27017 --dbpath /data/db
+    ports:
+      - 20001:27017
+    volumes:
+      - shard1s1:/data/db
+
+  shard1s2:
+    container_name: shard1s2
+    image: mongo
+    command: mongod --shardsvr --replSet shard1rs --port 27017 --dbpath /data/db
+    ports:
+      - 20002:27017
+    volumes:
+      - shard1s2:/data/db
+
+  shard1s3:
+    container_name: shard1s3
+    image: mongo
+    command: mongod --shardsvr --replSet shard1rs --port 27017 --dbpath /data/db
+    ports:
+      - 20003:27017
+    volumes:
+      - shard1s3:/data/db
+  mongos:
+    container_name: mongos
+    image: mongo
+    command: mongos --configdb cfgrs/configs1:27017,configs2:27017,configs3:27017 --bind_ip 0.0.0.0 --port 27017
+    ports:
+      - 30000:27017
+
+
+volumes:
+  configs1: {}
+  configs2: {}
+  configs3: {}
+  shard1s1: {}
+  shard1s2: {}
+  shard1s3: {}
